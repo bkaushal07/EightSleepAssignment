@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  server:
+    build: .
+    ports:
+      - "8000:8000"
+
+  generator:
+    build: .
+    command: ["sh", "-c", "sleep 5 && python event_generator.py"]
+    depends_on:
+      - server
